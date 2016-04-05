@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+	<hibernate-mapping package="com.yl.domain">
+		<class name="Employee" table="employee">
+		<id name="id" type="java.lang.Integer">
+		<generator class="increment"/>
+		</id>
+	
+	
+	<property name="name" type="java.lang.String">
+	<column name="name" length="64" not-null="false" />
+	</property>
+	<property name="email" type="java.lang.String" >
+	<column name="email" length="64" not-null="false"/>
+	</property>
+	<property name="heirdate" type="java.util.Date">
+	<column name="hiredate" not-null="false" />
+	</property>
+	<property name="salary" type="java.lang.Float">
+	<column name="salary" not-null="false" />
+	</property>
+	<property name="pwd" type="java.lang.String">
+	<column name="pwd" length="10" not-null="false" />
+	</property>
+	<property name="grade" type="java.lang.Integer">
+	<column name="grade" not-null="false" />
+	</property>
+	
+	<many-to-one name="department" column="dep_id" />
+	
+		</class>
+	
+	</hibernate-mapping>
