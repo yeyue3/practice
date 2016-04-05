@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.yl.domain">
+<class name="User" table="user" lazy="false">
+<id name="userid" type="java.lang.Integer">
+<column name="userid"/>
+<generator class="increment"/>
+</id>
+<property name="username" type="java.lang.String">
+<column name="username" length="64"/>
+</property>
+<property name="userpwd" type="java.lang.String">
+<column name="userpwd" length="64"/>
+</property>
+
+<set name="sendChat">
+<key column="sender_id"></key>
+<one-to-many class="Chat"></one-to-many>
+</set>
+<set name="getChat">
+<key column="getter_id"></key>
+<one-to-many class="Chat"></one-to-many>
+</set>
+</class>
+</hibernate-mapping>

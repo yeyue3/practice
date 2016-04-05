@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+  <form-beans>
+  <form-bean name="userForm" type="com.yl.forms.UserForm" />  
+  <form-bean name="massageForm" type="com.yl.forms.MassageForm" />  
+  </form-beans>
+
+   <global-exceptions />
+  <global-forwards />
+  
+  
+  <action-mappings>
+  <action path="/login" 
+  name="userForm" 
+  type="com.yl.actions.LoginAction" 
+  scope="request"
+  parameter="flag"
+  >
+  <forward name="loginok" path="/goMassageUi.do?flag=display" />
+  <forward name="goLoginUi" path="/WEB-INF/login.jsp" />
+  </action>
+  
+  
+  <action path="/goMassageUi" 
+  parameter="flag"
+  name="userForm" 
+  type="com.yl.actions.goMassageUiAction" 
+  scope="request">
+  <forward name="goMassageUi" path="/WEB-INF/mainView.jsp" />
+  </action>
+  
+  <action path="/goPublish" 
+  parameter="flag"
+  name="massageForm" 
+  type="com.yl.actions.goMassagePublishAction" 
+  scope="request">
+  <forward name="goPublishMassageUi" path="/WEB-INF/publish.jsp" />
+  <forward name="publishOk" path="/WEB-INF/publishOk.jsp" />
+  </action>
+  
+  </action-mappings>
+  <message-resources parameter="com.yl.struts.ApplicationResources" />
+</struts-config>
